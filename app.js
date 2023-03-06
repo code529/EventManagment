@@ -1,21 +1,29 @@
 const express = require("express");
 const fs = require("fs");
-const dotenv = require('dotenv');
-dotenv.config('./.env'); 
+const bodyParser = require('body-parser'); 
+const mongoose = require('mongoose');
+require('dotenv').config('./.env'); 
 const app = express();
 
 const userRouter = require('./src/routes/userRoutes'); 
 const eventRouter = require('./src/routes/userRoutes'); 
 
+const DB = process.env.DB; 
+const PORT = process.env.PORT; 
 
+mongoose.connect(DB)
+  .then(()=>console.log("Connect to Database"))
+  .catch((err)=>console.log(err)); 
+
+
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({extended : true})); 
 app.use(express.static('./src/assets'));
-app.use(express.json()); 
 app.use('/' , require('./src/routes')); 
 app.use('/api/v1/users/', userRouter); 
 app.use('/api/v1/events' , eventRouter); 
 
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`App running on port ${port}`);
+app.listen(PORT , () => {
+  console.log(`App running on port ${PORT}`);
 });
