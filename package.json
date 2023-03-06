@@ -4,7 +4,7 @@
   "description": "This is  a sports event managment web app",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
