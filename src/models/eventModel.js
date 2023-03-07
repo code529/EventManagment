@@ -7,7 +7,7 @@ const EventSchema = new mongoose.Schema({
     trim: true,
     maxLength: [100, "A event name must be less than equal 100 characters"],
     minLength: [10, "A event name must be more than equal 10 characters"],
-    validate: validator.isAlphanum,
+    // validate: validator.isAlpha,
   },
   date: [Date],
 
@@ -37,11 +37,12 @@ const EventSchema = new mongoose.Schema({
   },
   imageCover: {
     type: String,
-    required: [true, "Must have a cover img"],
+    // required: [true, "Must have a cover img"],
   },
   ageLimits: {
     type: Number,
   },
+  category: String,
   tags: [
     {
       type: String,
@@ -49,5 +50,5 @@ const EventSchema = new mongoose.Schema({
   ],
 });
 
-const Event = mongoose.model("Event", EventSchema);
+const Event = mongoose.model("event", EventSchema);
 module.exports = Event;
