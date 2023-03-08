@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema({
     validate: {
       // This only works on save and create!!
       validator: function (el) {
-        return el === this.password; // abc === abc
+        return el === this.password; 
       },
       message: "Passwords are not the same",
     },
@@ -33,7 +33,6 @@ const UserSchema = new mongoose.Schema({
   role: {
     type: String,
     enum: ["organizer", "admin", "user"],
-    required: [true, "Please enter your role "],
     default: "user",
   },
   photo: {

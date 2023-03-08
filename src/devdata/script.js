@@ -94,7 +94,15 @@ let sportImages = [
     "https://www.example.com/images/kayaking.jpg"
 ];
 
-india_cities = ["Mumbai", "Delhi", "Bengaluru", "Hyderabad", "Ahmedabad", "Chennai", "Kolkata", "Surat", "Pune", "Jaipur", "Lucknow", "Kanpur", "Nagpur", "Visakhapatnam", "Bhopal", "Patna", "Ludhiana", "Agra", "Nashik", "Vadodara", "Faridabad", "Madurai", "Varanasi", "Jamshedpur", "Srinagar", "Amritsar", "Raipur", "Allahabad", "Coimbatore", "Jabalpur", "Gwalior", "Vijayawada", "Jodhpur", "Mysore", "Guwahati", "Bhubaneswar", "Kota", "Salem", "Aligarh", "Bareilly", "Moradabad", "Gurgaon", "Jalandhar", "Tiruchirappalli", "Ambala", "Hisar", "Hubli-Dharwad", "Sambalpur", "Kurnool"]
+india_cities = ["Mumbai", "Delhi", "Bengaluru", "Hyderabad", "Ahmedabad", 
+"Chennai", "Kolkata", "Surat", "Pune", "Jaipur", "Lucknow", "Kanpur", 
+"Nagpur", "Visakhapatnam", "Bhopal", "Patna", "Ludhiana", "Agra", "Nashik", 
+"Vadodara", "Faridabad", "Madurai", "Varanasi", "Jamshedpur", "Srinagar",
+"Amritsar", "Raipur", "Allahabad", "Coimbatore", "Jabalpur", "Gwalior",
+"Vijayawada", "Jodhpur", "Mysore", "Guwahati", "Bhubaneswar", "Kota",
+"Salem", "Aligarh", "Bareilly", "Moradabad", "Gurgaon", "Jalandhar",
+"Tiruchirappalli", "Ambala", "Hisar", "Hubli-Dharwad", "Sambalpur",
+"Kurnool"]
 
 for (let i = 1; i <= 1000 ; i++) {
   const randomDate = new Date(Date.now() + Math.floor(Math.random() * 60 * 60 * 24 * 30 * 1000));
