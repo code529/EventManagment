@@ -24,27 +24,24 @@ const createSendToken = (user, statusCode, req, res) => {
 };
 
 exports.isLoggedIn = async (req, res, next) => {
-  if (req.cookies.jwt) {
-    try {
-      const decoded = await promisify(jwt.verify)(
-        req.cookies.jwt,
-        process.env.JWT_SECRET
-      );
-      const currentUser = await User.findById(decoded.id);
-      if (!currentUser) {
-        return next();
-      }
-
-      if (currentUser.changedPasswordAfter(decoded.iat)) {
-        return next();
-      }
-      res.locals.user = currentUser;
-      return next();
-    } catch (err) {
-      return next();
+  try {
+    let token;
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith("Bearer")
+    ) {
+      token = req.headers.authorization.split(" ")[1];
     }
+    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+    const currUser = await User.findById(decoded.id);
+    req.user = currUser;
+    next();
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err,
+    });
   }
-  next();
 };
 
 exports.signup = async (req, res, next) => {
