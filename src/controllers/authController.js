@@ -55,7 +55,7 @@ exports.signup = async (req, res, next) => {
       email: req.body.email,
       password: req.body.password,
       passwordConfirm: req.body.passwordConfirm,
-      role: req.body.role,
+      role: req.locals.role,
       // Handle this when use can upload file
       photo: "someString",
     });
