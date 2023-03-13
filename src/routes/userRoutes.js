@@ -19,6 +19,13 @@ const userRouter = express.Router();
 userRouter.post("/user/login", UserLocals, authControllers.login);
 userRouter.post("/user/signup", UserLocals, authControllers.signup);
 userRouter.get("/user/logout");
+userRouter.post("/forgotPassword", authControllers.forgotPassword);
+userRouter.patch("/resetPassword/:token", authControllers.resetPassword);
+userRouter.patch(
+  "/updateMyPassword",
+  authControllers.isLoggedIn,
+  authControllers.updatePassword
+);
 userRouter.post("/organizers/login", Organizerlocals, authControllers.login);
 userRouter.post("/organizers/signup", Organizerlocals, authControllers.signup);
 userRouter.post("admin/login", AdminLocals, authControllers.login);
