@@ -2,21 +2,23 @@ const express = require("express");
 const userController = require("../controllers/userController");
 const authControllers = require("../controllers/authController");
 const Organizerlocals = function(req , res , next){
-    req.locals.role = "Organizer" ; 
+    res.locals.role = "Organizer" ; 
     next(); 
 }
 const UserLocals = function(req , res, next){
-    req.locals.role = "User" ; 
+    res.locals.role = "User" ; 
     next(); 
 }
 const AdminLocals = function(req , res , next){
-    req.locals.role = "Admin"
+    res.locals.role = "Admin"
     next() ; 
 }
+const obj = {}; 
+obj.user = "string"; 
 const userRouter = express.Router();
 
 userRouter.post("user/login", UserLocals ,  authControllers.login);
-userRouter.post("user/signup",UserLocals , authControllers.signup);
+userRouter.post("user/signup", UserLocals , authControllers.signup);
 userRouter.get("user/logout");
 userRouter.post("/organizers/login", Organizerlocals ,  authControllers.login);
 userRouter.post("/organizers/signup", Organizerlocals ,  authControllers.signup);
