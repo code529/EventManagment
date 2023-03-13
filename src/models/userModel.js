@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
-
+const bcrypt = require("bcrypt");
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema({
     validate: {
       // This only works on save and create!!
       validator: function (el) {
-        return el === this.password; 
+        return el === this.password;
       },
       message: "Passwords are not the same",
     },
@@ -39,5 +39,14 @@ const UserSchema = new mongoose.Schema({
     type: String,
   },
 });
-const User = mongoose.model("User", userSchema);
+UserSchema.pre("save", async function (next) {
+  this.password = await bcrypt.hash(this.password, 12);
+  // Delete the password confirm field
+  this.passwordConfirm = undefined;
+  next();
+});
+UserSchema.methods.correctPassword = async function (candidatepass, userpass) {
+  return await bcrypt.compare(candidatepass, userpass);
+};
+const User = mongoose.model("User", UserSchema);
 module.exports = User;

@@ -1,23 +1,21 @@
-const express = require('express'); 
-const userController = require('../controllers/userController');
-const authControllers = require('../controllers/authController'); 
+const express = require("express");
+const userController = require("../controllers/userController");
+const authControllers = require("../controllers/authController");
 
-const userRouter = express.Router(); 
+const userRouter = express.Router();
 
-userRouter.post('/u/login' , authControllers.login); 
-userRouter.post('/u/signup' , authControllers.signup); 
-userRouter.get('/u/logout' , authControllers.logout);  
+userRouter.post("/login", authControllers.login);
+userRouter.post("/signup", authControllers.signup);
+userRouter.get("/logout");
+userRouter.post("/organizers/login", authControllers.login);
+userRouter.post("/organizers/signup", authControllers.signup);
 
-// user things : 
-    /**
-     * -Login/signin
-     * -Delete Account 
-     * -Forgot password 
-     * -signup
-     */
+// user things :
+/**
+ * -Login/signin
+ * -Delete Account
+ * -Forgot password
+ * -signup
+ */
 
-
-
-
-
-module.exports  = userRouter ; 
+module.exports = userRouter;
