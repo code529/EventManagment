@@ -34,7 +34,10 @@ exports.isLoggedIn = async (req, res, next) => {
     }
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
     const currUser = await User.findById(decoded.id);
-    req.user = currUser;
+    if(!currUser){
+      next(); 
+    }
+    res.locals.user = currUser;
     next();
   } catch (err) {
     res.status(404).json({
