@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
+const { promisify } = require("util");
 
 // returns a JWT signed token which can be set to cookie;
 const signToken = (id) => {
@@ -24,27 +25,18 @@ const createSendToken = (user, statusCode, req, res) => {
 };
 
 exports.isLoggedIn = async (req, res, next) => {
-  try {
-    let token;
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith("Bearer")
-    ) {
-      token = req.headers.authorization.split(" ")[1];
-    }
-    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-    const currUser = await User.findById(decoded.id);
-    if(!currUser){
-      next(); 
-    }
-    res.locals.user = currUser;
-    next();
-  } catch (err) {
-    res.status(404).json({
-      status: "fail",
-      message: err,
-    });
+  let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    token = req.headers.authorization.split(" ")[1];
   }
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+  const currUser = await User.findById(decoded.id);
+
+  next();
 };
 
 exports.signup = async (req, res, next) => {

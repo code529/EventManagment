@@ -2,10 +2,11 @@ const express = require("express");
 
 const eventRouter = express.Router();
 const eventController = require("../controllers/eventController");
+const authControllers = require("../controllers/authController");
 eventRouter
   .route("/")
   .post(eventController.createEvent)
-  .get(eventController.getAllevents);
+  .get(authControllers.isLoggedIn, eventController.getAllevents);
 eventRouter
   .route("/:id")
   .get(eventController.getEvents)
