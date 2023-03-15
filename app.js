@@ -9,15 +9,15 @@ const app = express();
 
 const userRouter = require("./src/routes/userRoutes");
 const eventRouter = require("./src/routes/eventRoutes");
+const homeRouter = require("./src/routes/index");
 
-app.set("view engine" , "ejs");
-app.set("views" , path.join(__dirname , 'assets'));
-
+app.set("view engine", "ejs");
+app.set("views", "./src/assets");
+app.use(express.static("./src/assets"));
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("./src/assets"));
-app.use("/", require("./src/routes"));
+app.use("/", homeRouter);
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/events", eventRouter);
