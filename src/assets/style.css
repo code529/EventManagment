@@ -1,0 +1,232 @@
+body {
+  margin: 0;
+  background-color: rgb(245, 244, 244);
+  padding: 0;
+  font-family: Neue Plak, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, Helvetica, Tahoma, Arial, sans-serif;
+}
+
+.header {
+  width: auto;
+  margin-top: 0px;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+.logo {
+  margin: 6px;
+  width: 36px;
+  border-radius: 50%;
+}
+
+.nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  height: auto;
+}
+.nav-up {
+  list-style-type: none;
+  margin-left: 500px;
+  padding: 0;
+  text-align: center;
+}
+
+.nav-up li {
+  float: left;
+  text-align: center;
+}
+
+.nav-up a {
+  text-decoration: none;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  color: black;
+}
+
+.nav-up a:hover {
+  background-color: rgb(241, 241, 241);
+}
+
+.bg-img img {
+  width: 100%;
+}
+.sec1 {
+  margin: 50px 50px 0px 50px;
+}
+
+.city {
+  margin-left: 70px;
+  font-size: 30px;
+  color: rgb(67, 20, 102);
+}
+.sec1 input {
+  width: 180px;
+  height: auto;
+  font-size: 30px;
+}
+.category {
+  margin-top: 50px;
+  color: #1e0a3c;
+  text-transform: capitalize;
+}
+
+.d {
+  list-style: none;
+  display: flex;
+  overflow: auto;
+  margin-bottom: 0;
+  padding-bottom: 16px;
+}
+
+.d a {
+  margin: 10px;
+  text-align: center;
+  font-size: 15px;
+  color: rgb(82, 81, 81);
+  text-transform: capitalize;
+  text-decoration: none;
+}
+.d a:hover {
+  color: rgb(46, 61, 156);
+}
+.sec2 {
+  margin-left: 75px;
+  padding: 50px;
+}
+
+.btn-2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: none;
+  text-align: left;
+  text-transform: capitalize;
+  width: 300px;
+  color: rgb(31, 30, 30);
+  padding: 15px 32px;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 4px;
+  cursor: pointer;
+  background-color: rgb(229, 231, 233);
+}
+.btn img {
+  width: 20px;
+  height: 20px;
+  margin: 0 10px 0 0;
+}
+.btn:hover {
+  background-color: rgb(247, 247, 248);
+}
+
+.sec3 {
+  background-size: 100%;
+  margin: 20px;
+  padding-left: 80px;
+}
+
+.category-2 {
+  margin-top: 50px;
+  color: #1e0a3c;
+  text-transform: capitalize;
+  margin-left: 30px;
+}
+
+.eve-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.events {
+  margin: 50px 30px;
+  background-color: white;
+  width: 270px;
+  height: 400px;
+  margin-top: 20px;
+}
+.events:hover {
+  box-shadow: rgb(172, 172, 172) 0 0 20px;
+}
+.events img {
+  width: 270px;
+  height: 150px;
+}
+.sec3 a {
+  text-decoration: none;
+}
+
+.eve {
+  margin: 15px;
+  margin-top: 10px;
+  color: rgb(22, 15, 46);
+}
+.eve-time {
+  margin: 15px;
+  color: rgb(175, 54, 10);
+}
+.eve-loc {
+  margin: 15px;
+  color: gray;
+}
+
+.eve-org {
+  margin: 15px;
+  color: rgb(32, 8, 32);
+}
+.feed-events-bucket__separator {
+  margin: 0 -50vw;
+}
+
+.foot {
+  background-color: #1e0a3c;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.col1 {
+  height: 250px;
+  width: 380px;
+}
+.foot-links {
+  list-style: none;
+  padding-top: 30px;
+}
+
+.foot-links a {
+  color: white;
+  text-decoration: none;
+  font-size: small;
+}
+.foot-links a:hover {
+  color: rgb(82, 170, 199);
+  text-decoration: none;
+}
+.last {
+  margin-top: 0.5px;
+  color: white;
+  width: 1480;
+  height: 50px;
+  background-color: #1e0a3c;
+}
+.left {
+  margin-top: 0px;
+  padding-top: 13px;
+  text-align: center;
+}
+.left a {
+  text-decoration: none;
+  color: black;
+}
+.left a:hover {
+  text-decoration: solid;
+  color: rgb(25, 21, 157);
+}
