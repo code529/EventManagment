@@ -6,15 +6,14 @@ const schema = new mongoose.Schema({
     required : [true , "Can't save userId without event"]
     }, 
     userId : [{
-        type : [{
-            type : mongoose.Schema.Types.ObjectId , 
-            unique : true ,     
-        }] , 
-        required : true 
+        type : {
+            type : mongoose.Schema.Types.ObjectId, 
+            ref : 'User'
+        }  
     }]
 });
 
 
 
-const eventAndUser = mongoose.model('Eventanduser' , schema); 
+const eventAndUser = mongoose.model('Eventanduser', schema); 
 module.exports = eventAndUser; 
