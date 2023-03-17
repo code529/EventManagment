@@ -7,6 +7,7 @@ const morgan = require("morgan");
 require("dotenv").config("./.env");
 const app = express();
 const testmodel = require("./src/controllers/userController.js");
+const organiserRouter = require("./src/routes/userRoutes");
 
 const userRouter = require("./src/routes/userRoutes");
 const eventRouter = require("./src/routes/eventRoutes");
@@ -17,10 +18,10 @@ app.use(express.static("./src/assets"));
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/", homeRouter);
+// app.use("/", homeRouter);
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/events", eventRouter);
-app.use("/organizer", organizerRouter);
+app.use("/api/v1/organizers", organiserRouter);
 
 module.exports = app;
