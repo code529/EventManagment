@@ -5,7 +5,6 @@ const APIFeatures = require("./../utils/apiFeatures");
 
 exports.home = function(req , res){
 
-    // Name and all that pages which are needed 
 
 
 
@@ -33,8 +32,8 @@ exports.getEvents = async (req, res) => {
 exports.createEvent = async (req, res) => {
   try {
     const newEvent = new Events(req.body);
-    newEvent.save().then(()=>{console.log("Added")})
-    .catch(err=>{console.log(err)});
+    await newEvent.save();
+    console.log("Added");
     res.status(201).json({
       status: "success",
       data: {
@@ -52,9 +51,6 @@ exports.createEvent = async (req, res) => {
 
 exports.events = async function(req , res){
 
-    // List all the Events in a render file
 
 }
 
-
-// Create Event 
