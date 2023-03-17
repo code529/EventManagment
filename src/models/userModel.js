@@ -39,6 +39,11 @@ const UserSchema = new mongoose.Schema({
   photo: {
     type: String,
   },
+  active: {
+    type: Boolean,
+    default: true,
+    select: false,
+  },
 });
 UserSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, 12);
