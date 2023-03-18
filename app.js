@@ -11,6 +11,7 @@ const organizerRouter = require("./src/routes/organizerRouter.js");
 
 const userRouter = require("./src/routes/userRoutes");
 const eventRouter = require("./src/routes/eventRoutes");
+const reviewRouter = require("./src/routes/reviewRoutes");
 
 app.set("view engine", "ejs");
 app.set("views", "./src/assets");
@@ -23,5 +24,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/events", eventRouter);
 app.use("/api/v1/organizer", organizerRouter);
+app.use("/api/v1/reviews", reviewRouter);
 
 module.exports = app;
