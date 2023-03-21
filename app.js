@@ -6,9 +6,9 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 require("dotenv").config("./.env");
 const app = express();
+
 const testmodel = require("./src/controllers/userController.js");
 const organizerRouter = require("./src/routes/organizerRouter.js");
-
 const userRouter = require("./src/routes/userRoutes");
 const eventRouter = require("./src/routes/eventRoutes");
 const reviewRouter = require("./src/routes/reviewRoutes");

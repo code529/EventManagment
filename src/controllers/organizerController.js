@@ -29,24 +29,23 @@ exports.getEvents = async (req, res) => {
   }
 };
 
-exports.createEvent = async (req, res) => {
-  try {
+module.exports.createEvent = async (req, res) => {
     const newEvent = new Events(req.body);
-    await newEvent.save();
-    console.log("Added");
+    newEvent.save().then(()=>{
     res.status(201).json({
       status: "success",
       data: {
         event: newEvent,
       },
     });
-  } catch (err) {
+    })
+    .catch((err)=>{
     res.status(400).json({
       status: "Fail",
       message: err,
     });
   }
-};
+)};
 
 
 exports.events = async function(req , res){
