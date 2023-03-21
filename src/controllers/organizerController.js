@@ -31,7 +31,7 @@ exports.getEvents = async (req, res) => {
 
 module.exports.createEvent = async (req, res) => {
     const newEvent = new Events(req.body);
-    newEvent.save().then(()=>{
+    await newEvent.save().then(()=>{
     res.status(201).json({
       status: "success",
       data: {
