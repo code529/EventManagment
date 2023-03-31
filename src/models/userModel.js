@@ -36,6 +36,17 @@ const UserSchema = new mongoose.Schema({
     default: true,
     select: false,
   },
+  google: {
+    id: {
+      type: String,
+    },
+    name: {
+      type: String,
+    },
+    email: {
+      type: String,
+    },
+  },
 });
 UserSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, 12);
