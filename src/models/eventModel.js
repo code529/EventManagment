@@ -25,12 +25,7 @@ const EventSchema = new mongoose.Schema({
   organizer: { name: String, email: String, phone: String },
   category: String,
   price: { type: Number, required: [true, "A event must have a price"] },
-  imageCover: {
-    type: String,
-  },
-  ageLimits: {
-    type: Number,
-  },
+
   category: String,
   tags: [
     {

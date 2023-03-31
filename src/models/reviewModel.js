@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Event = require("./eventModel");
+const User = require("./userModel");
 const reviewSchema = new mongoose.Schema(
   {
     rating: {
@@ -17,7 +18,7 @@ const reviewSchema = new mongoose.Schema(
     },
     event: {
       type: mongoose.Schema.ObjectId,
-      ref: "Tour",
+      ref: "Event",
       required: [true, "Review must belong to a event"],
     },
     user: {

@@ -31,14 +31,6 @@ const UserSchema = new mongoose.Schema({
       message: "Passwords are not the same",
     },
   },
-  role: {
-    type: String,
-    enum: ["Organizer", "Admin", "User"],
-    default: "user",
-  },
-  photo: {
-    type: String,
-  },
   active: {
     type: Boolean,
     default: true,
