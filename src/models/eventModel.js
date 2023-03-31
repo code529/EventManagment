@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+const Review = require('./reviewModel'); 
+
+
 const EventSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -7,7 +10,6 @@ const EventSchema = new mongoose.Schema({
     trim: true,
     maxLength: [100, "A event name must be less than equal 100 characters"],
     minLength: [10, "A event name must be more than equal 10 characters"],
-    // validate: validator.isAlpha,
   },
   date: Date,
 
@@ -20,7 +22,12 @@ const EventSchema = new mongoose.Schema({
       "A event description must be less than equal 100 characters",
     ],
   },
-
+  review : [
+    {
+      type : mongoose.Types.ObjectId,
+      ref : 'Review'
+    }
+  ],
   image: { type: String, required: [true, "Must have a  img"] },
   organizer: { name: String, email: String, phone: String },
   category: String,
