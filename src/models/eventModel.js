@@ -1,25 +1,24 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const Review = require('./reviewModel'); 
-
+const Organizer = require('./organizer'); 
 
 const EventSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "A event must have a name"],
+    required: [true, "An event must have a name"],
     trim: true,
-    maxLength: [100, "A event name must be less than equal 100 characters"],
-    minLength: [10, "A event name must be more than equal 10 characters"],
+    maxLength: [100, "An event name must be less than equal 100 characters"],
+    minLength: [10, "An event name must be more than equal 10 characters"],
   },
   date: Date,
-
   location: String,
   description: {
     type: String,
     trim: true,
     maxLength: [
       500,
-      "A event description must be less than equal 100 characters",
+      "An event description must be less than equal 100 characters",
     ],
   },
   review : [
@@ -28,12 +27,14 @@ const EventSchema = new mongoose.Schema({
       ref : 'Review'
     }
   ],
-  image: { type: String, required: [true, "Must have a  img"] },
-  organizer: { name: String, email: String, phone: String },
+  image: { type: String, required: [true, "Must have an image"] },
+  organizer: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Organizer',
+    required: [true, 'An event must have an organizer'],
+  },
   category: String,
-  price: { type: Number, required: [true, "A event must have a price"] },
-
-  category: String,
+  price: { type: Number, required: [true, "An event must have a price"] },
   tags: [
     {
       type: String,
@@ -41,5 +42,5 @@ const EventSchema = new mongoose.Schema({
   ],
 });
 
-const Event = mongoose.model("event", EventSchema);
+const Event = mongoose.model("Event", EventSchema);
 module.exports = Event;
