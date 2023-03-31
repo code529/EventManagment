@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const Review = require('./reviewModel'); 
 const Organizer = require('./organizer'); 
+const Ticket = require('./tickets'); 
+
+
 
 const EventSchema = new mongoose.Schema({
   name: {
@@ -21,6 +24,12 @@ const EventSchema = new mongoose.Schema({
       "An event description must be less than equal 100 characters",
     ],
   },
+  tickets : [
+    {
+      type : mongoose.Types.ObjectId, 
+      ref : 'Ticket'
+    }
+  ],
   review : [
     {
       type : mongoose.Types.ObjectId,

@@ -3,7 +3,6 @@ const validator = require("validator");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const Event = require("./eventModel");
-const Ticket = require("./tickets");
 
 const OrganizerSchema = new mongoose.Schema({
   username: {
@@ -23,8 +22,13 @@ const OrganizerSchema = new mongoose.Schema({
     minlength: 8,
     select: false,
   },
-  events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }],
-  tickets: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Ticket' }],
+  events: [
+    {
+     type: mongoose.Schema.Types.ObjectId,
+     ref: 'Event'
+    }
+   ],
+
   passwordResetToken: String,
   passwordResetExpires: Date
 });
