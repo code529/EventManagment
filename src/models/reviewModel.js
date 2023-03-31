@@ -17,7 +17,7 @@ const reviewSchema = new mongoose.Schema(
     },
     event: {
       type: mongoose.Schema.ObjectId,
-      ref: "Tour",
+      ref: "Event",
       required: [true, "Review must belong to a event"],
     },
     user: {
