@@ -3,7 +3,7 @@ const validator = require("validator");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const Event = require("./eventModel");
-const Ticket = require("./ticket");
+const Ticket = require("./tickets");
 
 const OrganizerSchema = new mongoose.Schema({
   username: {
