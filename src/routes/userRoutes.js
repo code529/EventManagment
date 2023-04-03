@@ -1,6 +1,7 @@
 const express = require("express");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
+
 const Organizerlocals = function (req, res, next) {
   res.locals.role = "Organizer";
   next();

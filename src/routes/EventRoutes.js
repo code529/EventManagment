@@ -3,6 +3,8 @@ const express = require("express");
 const eventRouter = express.Router();
 const eventController = require("../controllers/eventController");
 const authControllers = require("../controllers/authController");
+const reviewRouter = require("./reviewRoutes");
+eventRouter.use("/:eventId/reviews", reviewRouter);
 eventRouter
   .route("/")
   .post(eventController.createEvent)

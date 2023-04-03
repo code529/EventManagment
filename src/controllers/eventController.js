@@ -57,7 +57,7 @@ exports.updateEvent = async (req, res) => {
 };
 exports.getEvents = async (req, res) => {
   try {
-    const event = await Event.findById(req.params.id);
+    const event = await Event.findById(req.params.id).populate("reviews");
     res.status(201).json({
       status: "success",
       data: {
