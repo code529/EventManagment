@@ -14,7 +14,7 @@ const cookieSession = require("cookie-session");
 const testmodel = require("./src/controllers/userController.js");
 const organizerRouter = require("./src/routes/organizerRouter.js");
 const userRouter = require("./src/routes/userRoutes");
-const eventRouter = require("./src/routes/eventRoutes");
+const eventRouter = require("./src/routes/EventRoutes");
 const reviewRouter = require("./src/routes/reviewRoutes");
 const viewsRouter = require("./src/routes/viewsRouter");
 
