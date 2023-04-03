@@ -3,12 +3,7 @@ const Events = require('../models/eventModel');
 const APIFeatures = require("./../utils/apiFeatures");
 
 
-exports.home = function(req , res){
 
-
-
-
-}
 
 
 
@@ -48,8 +43,4 @@ module.exports.createEvent = async (req, res) => {
 )};
 
 
-exports.events = async function(req , res){
-
-
-}
 

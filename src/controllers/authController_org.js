@@ -1,9 +1,8 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/userModel");
-
+const Organizer = require("../models/organizer");
 const bcrypt = require("bcryptjs");
 const { promisify } = require("util");
-const sendEmail = require("./../utils/email");
+const sendEmail = require("../utils/email");
 const crypto = require("crypto");
 
 // returns a JWT signed token which can be set to cookie;
@@ -12,8 +11,6 @@ const signToken = (id) => {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
-
-// can be used in signin and signup both
 const createSendToken = (user, statusCode, req, res) => {
   const token = signToken(user._id);
   user.password = undefined;
@@ -26,7 +23,6 @@ const createSendToken = (user, statusCode, req, res) => {
     },
   });
 };
-
 exports.isLoggedIn = async (req, res, next) => {
   let token;
   if (
@@ -37,14 +33,13 @@ exports.isLoggedIn = async (req, res, next) => {
   }
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
-  const currUser = await User.findById(decoded.id);
+  const currUser = await Organizer.findById(decoded.id);
   req.user = currUser;
   next();
 };
-
 exports.signup = async (req, res, next) => {
   try {
-    const newUser = User.create({
+    const newUser = Organizer.create({
       // should check wether email exist already or not;
       username: req.body.username,
       email: req.body.email,
@@ -70,7 +65,7 @@ exports.login = async (req, res, next) => {
         message: "Bad request",
       });
     }
-    const user = await User.findOne({ email: email }).select("+password");
+    const user = await Organizer.findOne({ email: email }).select("+password");
     if (!user || !(await user.correctPassword(password, user.password))) {
       res.status(401).json({
         status: "fail",
@@ -88,7 +83,7 @@ exports.login = async (req, res, next) => {
 };
 exports.forgotPassword = async (res, req, next) => {
   // 1 Get user based on posted email
-  const user = await User.findOne({ email: req.body.email });
+  const user = await Organizer.findOne({ email: req.body.email });
   // 2 Generate the random reset token
   const resetToken = user.createPasswordResetToken();
   await user.save({ validateBeforeSave: false });
@@ -126,7 +121,7 @@ exports.resetPassword = async (res, req, next) => {
     .createHash("sha256")
     .update(req.params.token)
     .digest("hex");
-  const user = await User.findOne({
+  const user = await Organizer.findOne({
     passwordResetToken: hashedToken,
     passwordResetExpires: { $gt: Date.now() },
   });
@@ -159,7 +154,7 @@ exports.updatePassword = async (req, res, next) => {
     token = req.headers.authorization.split(" ")[1];
   }
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-  const user = await User.findById(decoded.id).select("+password");
+  const user = await Organizer.findById(decoded.id).select("+password");
   // 2) check if posted password is correct
   if (!user.correctPassword(req.body.passwordCurrent, user.password)) {
     res.status(401).json({

@@ -16,9 +16,9 @@ const AdminLocals = function (req, res, next) {
 
 const userRouter = express.Router();
 
-userRouter.post("/user/login", UserLocals, authController.login);
-userRouter.post("/user/signup", UserLocals, authController.signup);
-userRouter.get("/user/logout");
+userRouter.post("/login", authController.login);
+userRouter.post("/signup", authController.signup);
+userRouter.get("/logout");
 userRouter.post("/forgotPassword", authController.forgotPassword);
 userRouter.patch("/resetPassword/:token", authController.resetPassword);
 userRouter.patch(
